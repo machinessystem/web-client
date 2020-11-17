@@ -1,0 +1,8 @@
+<mat-form-field [appearance]="appearance">
+    <mat-label *ngIf="label">{{label}}</mat-label>
+    <input matInput [type]="type" [formControl]="form?.controls[name]" [placeholder]="placeholder">
+    <mat-error *ngIf="ngForm?.submitted && form?.get(name)?.errors">
+        <span *ngIf="form?.get(name)?.hasError('required')">Please enter&nbsp;{{label?label:name}}</span>
+        <ng-content select="span"></ng-content>
+    </mat-error>
+</mat-form-field>

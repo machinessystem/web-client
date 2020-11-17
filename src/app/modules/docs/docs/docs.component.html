@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Documentations</h1>
+    <hr>
+    <ng-container *ngIf="docs$| async as docs">
+        <div *ngFor="let doc of docs">
+            <h2>{{doc?.title}}</h2>
+            <div *ngFor="let desc of doc?.descriptions">
+                <p>{{desc?.text}}</p>
+                <ng-container *ngIf="desc?.imageUrl">
+                    <img [src]="desc?.imageUrl" [attr.alt]="desc?.text">
+                </ng-container>
+                <code>{{desc?.code}}</code>
+            </div>
+            <hr>
+        </div>
+    </ng-container>
+</div>

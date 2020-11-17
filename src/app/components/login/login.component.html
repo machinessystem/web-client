@@ -1,0 +1,28 @@
+<app-flyout>
+    <div class="container">
+        <form [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)" #_loginForm="ngForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="identifier" placeholder="Email your email">
+                <mat-error *ngIf="_loginForm.submitted && loginForm.get('identifier').errors">
+                    <span *ngIf="loginForm.get('identifier').hasError('required')">Please enter your Email or
+                        username</span>
+                    <span *ngIf="getError('identifier')">{{getError('identifier')}}</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+                <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <div class="actions">
+                <button appButton class="to-r" [disabled]="isProcessing || loginForm.invalid">Login</button>
+            </div>
+        </form>
+        <div class="form-group"><a (click)="navToSignUp()">Sign up</a> </div>
+        <div class="form-group"><a (click)="navToForgotPassword()">Forgot password</a></div>
+    </div>
+</app-flyout>

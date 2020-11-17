@@ -1,0 +1,30 @@
+@import "../../../../sass//main";
+
+$primary: $color-primary;
+$secondary: $color-secondary;
+$title-color: $color-grey-dark-1;
+$washout: $color-grey;
+
+.primary {
+  fill-rule: "evenodd";
+  clip-rule: "evenodd";
+  fill: $primary;
+}
+
+.secondary {
+  fill-rule: "evenodd";
+  clip-rule: "evenodd";
+  fill: $secondary;
+}
+
+.title {
+  fill-rule: "evenodd";
+  clip-rule: "evenodd";
+  fill: $title-color;
+}
+
+.washout {
+  fill-rule: "evenodd";
+  clip-rule: "evenodd";
+  fill: $washout;
+}

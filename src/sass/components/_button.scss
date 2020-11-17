@@ -1,0 +1,60 @@
+.btn {
+    border: none;
+    padding: 0.375rem 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0;
+    transition: none;
+    &-primary {
+      background-color: $color-primary;
+      & + .link {
+        margin-left: 1rem;
+      }
+      &:hover {
+        color: #fff;
+        background-color: darken($color-primary, 3%);
+        border-color: none;
+      }
+      &:focus,
+      &.focus {
+        color: #fff;
+        background-color: darken($color-primary, 0.15);
+        border-color: none;
+        box-shadow: none;
+      }
+  
+      &:not(:disabled):not(.disabled):active,
+      &:not(:disabled):not(.disabled).active,
+      .show > &.dropdown-toggle {
+        color: #fff;
+        background-color: darken($color-primary, 0.15);
+        border-color: none;
+      }
+  
+      &:not(:disabled):not(.disabled):active:focus,
+      &:not(:disabled):not(.disabled).active:focus,
+      .show > &.dropdown-toggle:focus {
+        background-color: darken($color-primary, 3%);
+        box-shadow: none;
+      }
+      &:disabled {
+        color: #fff;
+        background-color: $color-grey;
+        border-color: none;
+      }
+    }
+    &:focus,
+    &.focus {
+      outline: 0;
+      box-shadow: none;
+    }
+  }
+  
+  .link {
+    color: $color-primary;
+    margin-right: 1rem;
+    & + & {
+      // margin-bottom:1rem;
+    }
+  }
+  

@@ -1,0 +1,18 @@
+$media-title-font-size:1.25rem;
+.media {
+    display: flex;
+    align-items: center;
+    &__rounded {
+        border-radius: 100%;
+    }
+    &__img {
+        background-size: cover;
+        margin-right: 1rem;
+    }
+    &__description {
+        &--title {
+            font-size: $media-title-font-size;
+        }
+        &--subtitle {}
+    }
+}

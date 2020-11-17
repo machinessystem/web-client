@@ -1,0 +1,50 @@
+<div>
+    <h1>Create instance</h1>
+    <form [formGroup]="instance" (ngSubmit)="crateInstance(instance.value)" #instanceForm="ngForm" novalidate>
+        <mat-form-field>
+            <mat-label>Instance Name</mat-label>
+            <input matInput type="text" formControlName="name">
+            <mat-error *ngIf="instanceForm.submitted && instance.get('name').errors">
+                <span *ngIf="instance.get('name').hasError('required')">Please enter the Instance
+                    name</span>
+                <span *ngIf="instance.get('name').hasError('pattern')">Please enter a valid Instance
+                    name</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Activity</mat-label>
+            <mat-select formControlName="activityId">
+                <mat-option *ngFor="let activity of activities" [value]="activity?._id">
+                    {{activity?.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="instanceForm.submitted && instance.get('activityId').errors">
+                <span *ngIf="instance.get('activityId').hasError('required')">Please select any activity</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>CPU</mat-label>
+            <mat-select formControlName="cpuId">
+                <mat-option *ngFor="let cpu of cpus" [value]="cpu?._id">{{cpu?.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="instanceForm.submitted && instance.get('activityId').errors">
+                <span *ngIf="instance.get('activityId').hasError('required')">Please select any CPU</span>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Communication Device</mat-label>
+            <mat-select  formControlName="comnDeviceId">
+                <mat-option *ngFor="let comnDevice of comnDevices" [value]="comnDevice?._id">
+                    {{comnDevice?.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="instanceForm.submitted && instance.get('comnDeviceId').errors">
+                <span *ngIf="instance.get('comnDeviceId').hasError('required')">Please select any Comnunication
+                    device</span>
+            </mat-error>
+        </mat-form-field>
+        <div class="actions">
+            <button appButton class="to-r" type="submit"
+                [disabled]="isProcessing || instance.invalid || disabled">Create</button>
+        </div>
+    </form>
+</div>

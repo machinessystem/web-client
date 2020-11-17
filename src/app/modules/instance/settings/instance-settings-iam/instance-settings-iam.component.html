@@ -1,0 +1,60 @@
+<ng-template #spinner>
+    <mat-spinner></mat-spinner>
+</ng-template>
+<div class="container">
+    <ng-container *ngIf="owner$ | async as owner; else spinner">
+        <button appButton (click)="addIam()">Add Manager</button>
+        <mat-card>
+            <mat-card-content>
+                <div class="manager__container">
+                    <div class="manager__info">
+                        <div class="manager__avatar" [ngStyle]="{'background-image': 'url(' + owner?.photoURL + ')'}"></div>
+                        <div>
+                            <p class="manager__displayName">{{owner?.displayName}}</p>
+                            <small>{{owner?.email}}</small>
+                            <div>
+                                <div class="badge">
+                                    <div class="badge__main">Owner</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <ng-container *ngFor="let iam of iams; let i =index;">
+            <ng-container *ngIf="iam?.iamUser$ | async as iamUser; else spinner">
+                <ng-container *ngIf="iam?.iamRole$ |async as iamRole; else spinner">
+                    <mat-card>
+                        <mat-card-content>
+                            <div class="manager__container">
+                                <div class="manager__info">
+                                    <ng-template #noProfileImageTempl>
+                                        <div class="manager__avatar">
+                                            <mat-icon>account_circle</mat-icon>
+                                        </div>
+                                    </ng-template>
+                                    <div class="manager__avatar" *ngIf="iamUser.photoURL else noProfileImageTempl" [ngStyle]="{'background-image': 'url(' + iamUser?.photoURL + ')'}"></div>
+                                    <div>
+                                        <p class="manager__displayName">{{iamUser?.displayName}}</p>
+                                        <small>{{iamUser?.email}}</small>
+                                        <div>
+                                            <div class="badge">
+                                                <div class="badge__main">{{iamRole?.role}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="manager__action">
+                                    <button appButton (click)="deleteIam(iam?.iamId)">Delete</button>
+                                    <button appButton (click)="editIam(iam?.iamId,iamUser?.email,iamRole?.roleId)">Edit Role</button>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</div>

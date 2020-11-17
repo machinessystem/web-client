@@ -1,0 +1,37 @@
+<ng-container *ngIf="instance && activity && cpu && comnDevice">
+
+    <div class="container">
+        <div>
+            <h2>Your instance</h2>
+        </div>
+        <mat-card>
+            <mat-card-content>
+                <div class="info">
+                    <label>Insance Name</label>
+                    <span>{{instance?.name}}</span>
+                </div>
+                <div class="info">
+                    <label>Insance ID</label>
+                    <span>{{instance?._id}}</span>
+                </div>
+                <div class="info">
+                    <label>Acvivity</label>
+                    <span>{{activity?.name}}</span>
+                </div>
+                <div class="info">
+                    <label>CPU</label>
+                    <span>{{cpu?.name}}</span>
+                </div>
+                <div class="info">
+                    <label>Communication Device</label>
+                    <span>{{comnDevice?.name}}</span>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <div class="intance_actions">
+            <button mat-button (click)="deleteInstance(instance?._id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+</ng-container>

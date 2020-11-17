@@ -1,0 +1,33 @@
+        @mixin hover() {
+            &:hover {
+                @content;
+            }
+        }
+        
+        @mixin respond($width) {
+            @if ($width==desktop-lg) {
+                @media only screen and (min-width: $bp-desktop-large) {
+                    @content;
+                }
+            }
+            @if ($width==desktop) {
+                @media only screen and (min-width: $bp-desktop) {
+                    @content;
+                }
+            }
+            @if ($width==tab-land) {
+                @media only screen and (min-width: $bp-tab-landcsape) {
+                    @content;
+                }
+            }
+            @if ($width==tab-port) {
+                @media only screen and (min-width: $bp-tab-portrait) {
+                    @content;
+                }
+            }
+            @if ($width==phone) {
+                @media only screen and (max-width: $bg-small) {
+                    @content;
+                }
+            }
+        }

@@ -1,0 +1,4 @@
+<img [src]="user?.photoURL" *ngIf="user?.photoURL else noUserImg" class="user__avatar" [attr.alt]="user?.displayName">
+<ng-template #noUserImg>
+    <mat-icon>account_circle</mat-icon>
+</ng-template>

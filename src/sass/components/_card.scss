@@ -1,0 +1,9 @@
+$card-box-shadow: 0.6px 0.8px 1px 1px lighten($color-black, 68%);
+$card-border-radius: 0.1rem;
+
+.card {
+  border-radius: $card-border-radius;
+  &.shadow {
+    box-shadow: $card-box-shadow;
+  }
+}

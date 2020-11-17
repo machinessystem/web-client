@@ -1,0 +1,24 @@
+<div class="container">
+    <header class="navbar navbar-expand flex-column flex-md-row bd-navbar">
+        <a class="navbar-brand mr-0 mr-md-2" routerLink="/" aria-label="Machines Project">
+            <app-logo></app-logo>
+        </a>
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item" *ngFor="let link of links" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">
+                    <a class="nav-link " [routerLink]="link.path">{{link?.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="navbar-nav ml-md-auto">
+            <ng-container *ngIf="user$ | async as user">
+                <li class="nav-item">
+                    <a class="user" [routerLink]="'/account/'+user?.uid">
+                        <app-user-avatar [user]="user"></app-user-avatar>
+                    </a>
+                </li>
+            </ng-container>
+        </ul>
+    </header>
+</div>

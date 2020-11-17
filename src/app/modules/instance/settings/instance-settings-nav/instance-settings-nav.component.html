@@ -1,0 +1,6 @@
+<div class="container">
+    <nav class="instance__navigation">
+        <a *ngFor="let link of links" routerLinkActive="active" class="instance__navigation--link" [routerLink]="link?.href">{{link?.name}}</a>
+    </nav>
+</div>
+<router-outlet></router-outlet>

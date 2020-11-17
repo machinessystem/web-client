@@ -1,0 +1,9 @@
+@import '../../../../sass/main';
+.pin {
+    &__container {}
+    &__title {}
+    &__subtitle {
+        margin-bottom: 0rem;
+    }
+    &__status {}
+}

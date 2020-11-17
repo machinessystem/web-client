@@ -1,0 +1,11 @@
+{
+    "title": "How to add my device to this System",
+    "descriptions": [
+        {
+            "text": "You need to have an account before such type of operations."
+        },
+        {
+            "text": "After successful login, from Home page, click on Get Started Link. You will be navitaged to the instances page where all your previous added devices would be shown. Don't worry if there is nothing listed. This is just becauces you haven't created one. Just click on 'Create an Instance' link. There your would asked some basic information about name you wish to give, type of CPU, Communicaion device etc. just fill and click on create. Congratulations! your device can be linked to this newly created 'Instance'. Ths Instance ID generated is the identifier for your specific device."
+        }
+    ]
+}

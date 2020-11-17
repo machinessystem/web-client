@@ -1,0 +1,32 @@
+<form [formGroup]="iam" (ngSubmit)="saveRole(iam.value)" #iamForm="ngForm" novalidate>
+    <div class="form__container">
+        <div class="form__group">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" cdkFocusInitial formControlName="email">
+                <mat-error *ngIf="iamForm.submitted && iam.get('email').errors">
+                    <span *ngIf="iam.get('email').hasError('required')">Please enter the manager's email</span>
+                    <span *ngIf="iam.get('email').hasError('pattern')">Please enter a valid email</span>
+                    <span *ngIf="iam.get('email').errors">{{this.getError('email')}}</span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__group">
+            <mat-form-field appearance="outline">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="roleId">
+                    <ng-container *ngIf="roles$ | async as roles">
+                        <mat-option *ngFor="let role of roles" [value]="role?.roleId">{{role?.role}}</mat-option>
+                    </ng-container>
+                </mat-select>
+                <mat-error *ngIf="iamForm.submitted && iam.get('roleId').errors">
+                    <span *ngIf="iam.get('roleId').hasError('required')">Please select a role</span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__actions--right">
+            <button appButton color="secondary" (click)="onCancel()">Cancel</button>
+            <button appButton type="submit">Add Manager</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="pin__container" *ngIf="pin else noPinTempl">
+        <p class="pin__subtitle">{{pin?.no}}</p>
+        <h2 class="pin__title">{{pin?.name}}</h2>
+        <div class="pin__status" *ngIf="readings$ | async as readings">
+            <small>Readings</small>
+            <ng-container *ngFor="let reading of readings">
+                <p>{{reading?.reading}}&nbsp;<span>on {{reading?.time}}</span></p>
+            </ng-container>
+        </div>
+    </div>
+
+</div>
+<ng-template #noPinTempl>
+    No such pin definition found.
+</ng-template>

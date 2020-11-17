@@ -1,0 +1,9 @@
+@import '../../../../../sass/main';
+.form {
+    &__group {}
+    &__actions {
+        &--right {
+            margin-left: auto;
+        }
+    }
+}

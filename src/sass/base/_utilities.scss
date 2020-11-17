@@ -1,0 +1,11 @@
+.info {
+    display: flex;
+    margin: .8rem 0rem;
+    label {
+        color: $color-grey-dark-1;
+        min-width: 10rem;
+        @include respond(tab-port) {
+            width: 15rem;
+        }
+    }
+}

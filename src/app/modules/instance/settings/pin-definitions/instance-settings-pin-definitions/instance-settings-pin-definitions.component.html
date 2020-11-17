@@ -1,0 +1,20 @@
+<div class="container" *ngIf="CURRENT_PIN_DEFS_STATUS">
+    <ng-container [ngSwitch]="CURRENT_PIN_DEFS_STATUS">
+        <ng-container *ngSwitchCase="PIN_DEF_STATUS?.NO_CONF">
+            <p>No pin Configuration found. Please contact the Admintrator.</p>
+        </ng-container>
+        <ng-container *ngSwitchCase="PIN_DEF_STATUS?.NO_DEF">
+            <p>No pin Definition found</p>
+            <button appButton (click)="showAddPinDefinitionFlow()">Add Definition</button>
+        </ng-container>
+        <ng-container *ngSwitchCase="PIN_DEF_STATUS?.ADD_DEF">
+            <instance-settings-add-pin-definition [instance]="instance"
+                (onPinDefined)="onNewPinDefinitionsFound($event)">
+            </instance-settings-add-pin-definition>
+        </ng-container>
+        <ng-container *ngSwitchCase="PIN_DEF_STATUS?.FOUND">
+            <instance-pin-definitions [instance]="instance" [pinDefinitions]="pinDefinitions">
+            </instance-pin-definitions>
+        </ng-container>
+    </ng-container>
+</div>

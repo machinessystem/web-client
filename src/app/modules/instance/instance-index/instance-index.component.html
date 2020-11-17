@@ -1,0 +1,59 @@
+<ng-container [ngTemplateOutlet]="currentTemplate">
+</ng-container>
+
+<ng-template #noPinDefinitionTemplate>
+    <div class="container">
+        <p>No pin definition found. <a (click)="navToAddPinDefinition()">Add pin Definition</a></p>
+    </div>
+</ng-template>
+
+<ng-template #noActivityDefinitionTemplate>
+    <p>No Activitiy definition found. <a (click)="navToAddActivityDefinition()">Add Activity definition</a></p>
+</ng-template>
+
+<ng-template #defaultTemplate>
+    <div class="container" *ngIf="instance && activity && filteredPinDefinitions && ACTIVITY_CLASSES">
+        <div class="mx-auto-sm">
+            <h1 [ngClass]="status?.type==='error'?'status__error':'status__ok'">{{status?.text}}</h1>
+        </div>
+        <div class="status__container">
+            <mat-card>
+                <mat-card-content>
+                    <!-- Live Status Info Componennt by Activity -->
+                    <ng-container [ngSwitch]="activity?._id">
+                        <div *ngSwitchCase="ACTIVITY_CLASSES?.ENERGY_MEASUREMENT">
+                            <!-- Live Status for Energy Control Activity -->
+                            <ng-container *ngIf="activityDefinitions else noActivityDefinitionTemplate">
+                                <app-energy-control-status [instanceId]="instance?._id">
+                                </app-energy-control-status>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="status__container">
+            <mat-card>
+                <mat-card-content>
+                    <ng-container *ngIf="filteredPinDefinitions.length> 0">
+                        <ng-container *ngFor="let pin of filteredPinDefinitions; let i=index;">
+                            <instance-pin-cmd [pin]="pin" [instanceId]="instance?._id">
+                                <ng-container [ngSwitch]="activity?._id">
+                                    <div *ngSwitchCase="ACTIVITY_CLASSES?.ENERGY_MEASUREMENT">
+                                        <!-- Live Status for Energy Control Activity -->
+                                        <!-- <ng-container *ngIf="activityDefinitions"> -->
+                                        <app-energy-control-pin-status [pinNo]="pin?.no" [instanceId]="instance?._id">
+                                        </app-energy-control-pin-status>
+                                        <!-- </ng-container> -->
+
+                                    </div>
+                                </ng-container>
+                            </instance-pin-cmd>
+                            <mat-divider *ngIf="i!==filteredPinDefinitions.length-1"></mat-divider>
+                        </ng-container>
+                    </ng-container>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</ng-template>

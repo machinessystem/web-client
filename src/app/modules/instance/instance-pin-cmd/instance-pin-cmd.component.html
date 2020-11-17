@@ -1,0 +1,22 @@
+<div class="status">
+    <div class="status__text">{{pin?.name}}&nbsp;({{pin?.no}})</div>
+    <div class="status__status">
+        <span class="badge"
+            [ngClass]="{'badge-success':command===PIN_STATUSES.ON, 'badge-danger':command==PIN_STATUSES.OFF}">
+            {{getSatusText(command)}}
+        </span>
+    </div>
+    <div class="status__value">
+        <ng-content></ng-content>
+    </div>
+    <button class="status__action" (click)="toggleSwitch()">
+        <svg class="icon" *ngIf="command==PIN_STATUSES.ON else play">
+            <use xlink:href="assets/icons/light.svg#pause" />
+        </svg>
+        <ng-template #play>
+            <svg class="icon">
+                <use xlink:href="assets/icons/light.svg#play" />
+            </svg>
+        </ng-template>
+    </button>
+</div>

@@ -1,0 +1,15 @@
+@import "../../../../sass/main";
+
+.icon {
+  fill: $color-primary;
+  height: 3rem;
+  width: 3rem;
+}
+.list-group-item {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.no-instance .icon {
+  color: $color-grey;
+}

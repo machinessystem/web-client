@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Latest News and happenings on Machines System</h1>
+    <hr>
+
+    <ng-container *ngIf="news$ | async as news">
+        <div class="news" *ngFor="let n of news">
+            <div class="news__title">
+                <p class="news__category">{{n.categories| json}}</p>
+                <h2 class="news__title--text">{{n?.title}}</h2>
+            </div>
+            <p class="news__date">{{n?.publishedOn}}</p>
+            <p class="news__description"><span>{{n.description}}</span></p>
+            <div class="news__links">
+                <ng-container *ngFor="let link of n?.links">
+                    <ng-container *ngTemplateOutlet="link?.external==true? externalLink:defualtLink;context:link">
+                    </ng-container>
+                </ng-container>
+            </div>
+            <hr>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #externalLink let-href="href" let-name="name">
+    <a class="news__link" [href]="href">{{name}}</a>
+</ng-template>
+
+<ng-template #defualtLink let-href="href" let-name="name">
+    <a class="news__link" [routerLink]="href">{{name}}</a>
+</ng-template>

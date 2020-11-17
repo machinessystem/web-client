@@ -1,0 +1,15 @@
+<ng-container [ngTemplateOutlet]="currentTemplate">
+</ng-container>
+
+<ng-template #noActivityDefinitionTemplate>
+    <p>No Activity definition found.</p>
+    <button appButton (click)="setAddActivityDefinitionFlow()">Add Activity definition</button>
+</ng-template>
+
+<ng-template #addActivityDefinitionTemplate>
+    <app-energy-control-add-definition></app-energy-control-add-definition>
+</ng-template>
+
+<ng-template #defaultTemplate>
+    <p>energy-control-definitions works!</p>
+</ng-template>

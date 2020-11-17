@@ -1,0 +1,32 @@
+.avatar {
+  border-radius: 50%;
+}
+
+.brand-logo {
+  width: 8rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  .to-r {
+    margin-left: auto;
+  }
+}
+
+a {
+  color: $color-primary !important;
+}
+
+.live {
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+  color: $color-green;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+}

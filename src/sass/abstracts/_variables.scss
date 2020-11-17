@@ -1,0 +1,29 @@
+//COLORS
+$color-primary:#D13B00;
+$color-secondary:#038B5F;
+//OTHER COLORS
+$color-white:#fff;
+$color-red:#ff0000;
+$color-orange:#ff9900;
+$color-blue:#0026ff;
+$color-black:#000;
+$color-green:#54B363;
+$color-grey-light-2:#dadce0;
+$color-grey-light:#C6C6C6;
+$color-grey:#C6C6C6;
+$color-grey-dark:#aaaaaa;
+$color-grey-dark-1:#5E5C5C;
+$color-grey-dark-2:lighten($color-black, 30);
+//SHADOW
+//Links
+//GENERAL PADDINGS
+$padding:1.3333rem; //16px
+$link-decoration:none;
+$link-hover-color:darken($color-primary, .15);
+$link-hover-decoration:none;
+//SCREEN SIZES
+$bp-phone:37.5rem; // 600px / 16 px = 37.5rem
+$bp-tab-portrait: 37.5rem; //600px /16 px =37.5rem
+$bp-tab-landcsape: 56.25rem; //900px /16 px =56.25rem
+$bp-desktop: 75rem; //1200px /16 px =75rem
+$bp-desktop-large: 112.5rem; //1800/ 16 px = 112.5rem

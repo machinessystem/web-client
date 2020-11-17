@@ -1,0 +1,16 @@
+<form [formGroup]="pinForm" (ngSubmit)="savePin(pinForm.value)" #_pinform="ngForm">
+    <div mat-dialog-content>
+        <p>Add pin name to&nbsp;{{data?.mode}}&nbsp;{{data?.pinNo}}</p>
+        <mat-form-field appearance="outline">
+            <mat-label>Pin Name</mat-label>
+            <input matInput cdkFocusInitial formControlName="pinName">
+            <mat-error *ngIf="_pinform.submitted && pinForm.get('pinName').errors">
+                <span *ngIf="pinForm.get('pinName').hasError('required')">Please enter the Pin name</span>
+                <span *ngIf="pinForm.get('pinName').hasError('pattern')">Please enter a valid Pin name</span>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button>Ok</button>
+    </div>
+</form>

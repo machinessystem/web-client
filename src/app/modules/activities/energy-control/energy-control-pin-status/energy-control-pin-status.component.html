@@ -1,0 +1,12 @@
+<div>
+    <ng-container *ngIf="isLoading else energyConsumedTemplate">
+        <div height="20">
+            <mat-spinner></mat-spinner>
+        </div>
+    </ng-container>
+    <a *ngIf="status && !isLoading" (click)="getlastReading()">Refresh</a>
+</div>
+<ng-template #energyConsumedTemplate>
+    Power:&nbsp;<strong>{{status?.power}}&nbsp;{{status?.unit}}</strong>
+    <div>by&nbsp;{{status?.time |date: 'medium'}}</div>
+</ng-template>

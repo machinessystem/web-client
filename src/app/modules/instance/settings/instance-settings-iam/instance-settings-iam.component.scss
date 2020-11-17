@@ -1,0 +1,41 @@
+@import '../../../../../sass/main';
+.manager {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        &:not(:first-child) {
+            margin-top: .5rem;
+        }
+        @include respond(tab-port) {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+    &__info {
+        display: flex;
+        margin-right: 1rem;
+    }
+    &__avatar {
+        border-radius: 5rem;
+        width: 3rem;
+        height: 3rem;
+        background-size: cover;
+        margin-right: 1rem;
+    }
+    &__action {
+        padding: .8rem;
+        margin-left: auto;
+        color: $color-black;
+        border: none;
+        background: transparent;
+    }
+    &__displayName {
+        margin-bottom: 0rem;
+    }
+}
+
+.iam {
+    &__nav {
+        margin-bottom: 1rem;
+    }
+}

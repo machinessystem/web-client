@@ -1,0 +1,14 @@
+$default-icon-color: currentColor;
+$default-icon-size: 2.5rem;
+$default-icon-padding: 0.5rem;
+.icon {
+  fill: $default-icon-color;
+  width: $default-icon-size;
+  height: $default-icon-size;
+  padding: 0 $default-icon-padding;
+
+  &.sm {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

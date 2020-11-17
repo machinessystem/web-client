@@ -1,0 +1,9 @@
+@import '../../../../../sass/main';
+.chart {
+    @include respond(tab-port) {
+        width: auto;
+    }
+    &__container {
+        display: block;
+    }
+}

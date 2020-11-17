@@ -1,0 +1,12 @@
+@import "../../../../sass/main";
+.status {
+  &__container {
+    margin: 1rem 0rem;
+  }
+  &__error {
+    color: red;
+  }
+  &__ok {
+    color: green;
+  }
+}

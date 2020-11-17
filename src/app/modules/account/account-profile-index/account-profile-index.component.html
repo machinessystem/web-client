@@ -1,0 +1,10 @@
+<div class="container">
+    <div>
+        <span *ngFor="let badge of badges" class="badge badge-success">{{badge}}</span>
+    </div>
+    <h2>{{user?.displayName}}</h2>
+    <p>{{user?.email}}</p>
+    <div class="actions">
+        <a (click)="logout()" class="to-r">Logout</a>
+    </div>
+</div>

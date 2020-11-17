@@ -1,0 +1,8 @@
+<div class="actions">
+    <button appButton [attr.class]="className" [disabled]="disabled || ngForm?.submitted || form?.invalid" type="submit">
+        <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </button>
+</div>
+<ng-template>
+    <ng-content></ng-content>
+</ng-template>

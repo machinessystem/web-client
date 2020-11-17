@@ -1,0 +1,28 @@
+@import "../../../../sass/main";
+.status {
+  &:not(:first-child) {
+    margin-top: 0.5rem;
+  }
+  display: flex;
+  flex-direction: column;
+  @include respond(tab-port) {
+    flex-direction: row;
+    align-items: center;
+  }
+  &__status {
+    margin-right: 1rem;
+  }
+  &__text {
+    margin-right: 1rem;
+  }
+  &__action {
+    padding: 0.8rem;
+    margin-left: auto;
+    color: $color-black;
+    border: none;
+    background: transparent;
+    &:hover {
+      background-color: darken($color-white, 5);
+    }
+  }
+}

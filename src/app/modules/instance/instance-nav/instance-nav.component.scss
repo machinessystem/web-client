@@ -1,0 +1,65 @@
+@import '../../../../sass/main';
+$sidenav-components-padding:2rem;
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+}
+
+.sidenav .mat-toolbar {
+    background: inherit;
+    &__link {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: transparent;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    &__title {
+        cursor: pointer;
+        &--select {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            padding: .5rem 0rem;
+            background-color: transparent;
+        }
+    }
+    &__links {
+        margin-left: auto;
+    }
+}
+
+.expansion {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.instance {
+    &__overview {
+        padding: $sidenav-components-padding;
+        &--icon {
+            display: flex;
+            align-items: center;
+            .icon {
+                padding-left: 0rem;
+            }
+            &.right {
+                margin-left: auto;
+            }
+        }
+        display: flex;
+        align-items: center;
+    }
+}

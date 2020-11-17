@@ -1,0 +1,9 @@
+@import '../../../../sass/main';
+.signup {
+    margin-left: 5rem;
+    @include respond(tab-port) {
+        margin-left: 0rem;
+        max-width: max-content;
+        // margin-right: 70rem;
+    }
+}

@@ -1,0 +1,24 @@
+<form [formGroup]="iam" (ngSubmit)="updateRole(iam.value)" #iamForm="ngForm" novalidate>
+    <div class="form__container">
+        <div class="form__group">
+            <p>{{iam.get('email')?.value}}</p>
+        </div>
+        <div class="form__group">
+            <mat-form-field appearance="outline">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="roleId">
+                    <ng-container *ngIf="roles$ | async as roles">
+                        <mat-option *ngFor="let role of roles" [value]="role?.roleId">{{role?.role}}</mat-option>
+                    </ng-container>
+                </mat-select>
+                <mat-error *ngIf="iamForm.submitted && iam.get('roleId').errors">
+                    <span *ngIf="iam.get('roleId').hasError('required')">Please select a role</span>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__actions--right">
+            <button appButton color="secondary" (click)="onCancel()">Cancel</button>
+            <button appButton type="submit">Update Manager</button>
+        </div>
+    </div>
+</form>

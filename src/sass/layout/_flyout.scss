@@ -1,0 +1,66 @@
+$flyout-spacing: 2.5rem;
+$flyout-card-container-spacing: 1.5rem;
+$flyout-box-shadow: $card-box-shadow;
+$flyout-border-radius: $card-border-radius;
+$flyout-width: 28.125rem;
+.flyout {
+  &__container {
+    &.background {
+      @include respond(tab-port) {
+        background-color: lighten($color-grey, 15%);
+        background-size: cover;
+      }
+    }
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    @include respond(tab-port) {
+      &:before,
+      &:after {
+        flex-grow: 1;
+        content: "";
+        display: block;
+        min-height: 2rem;
+      }
+    }
+  }
+  &__content {
+    flex-shrink: 0;
+    @include respond(tab-port) {
+      width: $flyout-width;
+      margin: 0 auto;
+    }
+
+    .card {
+      overflow: hidden;
+
+      
+      border: none;
+      min-height: 95vh;
+      @include respond(tab-port) {
+        box-shadow: $flyout-box-shadow;
+        border-radius: $flyout-border-radius;
+        width: calc(100%-$flex-spacing);
+        min-height: 0;
+      }
+      .container {
+        padding: $flyout-card-container-spacing;
+        & + .container {
+          padding-top: 0;
+        }
+      }
+    }
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .container {
+        @include respond(tab-port) {
+          padding: 0;
+        }
+        padding: 0 $flyout-card-container-spacing;
+      }
+    }
+  }
+}

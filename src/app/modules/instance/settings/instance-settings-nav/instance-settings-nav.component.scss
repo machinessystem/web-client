@@ -1,0 +1,12 @@
+@import '../../../../../sass/main';
+.instance__navigation {
+    display: flex;
+    &--link {
+        padding: .75rem 1rem;
+        &.active {
+            border-bottom: .2rem solid $color-primary;
+        }
+    }
+    border-bottom: .05rem solid $color-grey-dark;
+    margin-bottom: 1rem;
+}

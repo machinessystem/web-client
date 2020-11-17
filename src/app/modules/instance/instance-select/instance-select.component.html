@@ -1,0 +1,50 @@
+<app-flyout>
+    <ng-container *ngIf="!viewCreationFlow  else instanceCreateTempl">
+        <div class="container" *ngIf="instances">
+            <ng-container *ngIf="instances.length>0 else noInstance">
+                <h1>Instance(s) for you</h1>
+                <div class="list-group list-group-flush" *ngFor="let instance of instances">
+                    <button class="list-group-item list-group-item-action" (click)="navigateToInstance(instance?._id)">
+                        <div class="media">
+                            <svg class="icon align-self-center mr-2">
+                                <use xlink:href="assets/icons/light.svg#cube"></use>
+                            </svg>
+                            <div class="media-body">
+                                <h4 class="m-0">{{instance?.name}}</h4>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </ng-container>
+        </div>
+        <div class="container">
+            <div class="actions mt-2">
+                <a (click)="navigateToCreateInstance()">Create an instance</a>
+            </div>
+        </div>
+    </ng-container>
+</app-flyout>
+
+
+<ng-template #instanceCreateTempl>
+    <div class="container">
+        <app-instance-create (onCreated)="onInstanceCreate($event)"></app-instance-create>
+        <div class="actions">
+            <a (click)="navigateToSelectInstance()">Select an instance</a>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #noInstance>
+    <div class="no-instance">
+        <div class="media">
+            <svg class="icon align-self-center mr-2">
+                <use xlink:href="assets/icons/light.svg#cube"></use>
+            </svg>
+            <div class="media-body">
+                <h4 class="m-0">No Instance found</h4>
+            </div>
+        </div>
+    </div>
+</ng-template>

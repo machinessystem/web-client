@@ -1,0 +1,26 @@
+@import "../../../../sass/main";
+.news {
+  &:not(:first-of-type) {
+    margin-top: 2rem;
+  }
+  &__container {
+    margin-bottom: 5rem;
+  }
+  &__category {
+    color: $color-green;
+    font-weight: 600;
+  }
+  &__title {
+    &:not(:first-of-type) {
+      margin-top: 1.5rem;
+    }
+    margin-top: 1.5rem;
+    &--text {
+      margin-right: 1rem;
+    }
+  }
+  &__date {
+    margin-top: 0;
+    color: $color-grey-dark-2;
+  }
+}

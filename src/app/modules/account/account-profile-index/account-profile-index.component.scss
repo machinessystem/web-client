@@ -1,0 +1,16 @@
+@import '../../../../sass/main';
+.account {
+    &__badges {
+        display: flex;
+        .account__badge {
+            border: none;
+            margin-right: 0.5rem;
+            font-size: .8rem;
+            color: $color-white;
+            border: none;
+            background-color: $color-primary;
+            border-radius: 2rem;
+            padding: .2rem 1rem;
+        }
+    }
+}

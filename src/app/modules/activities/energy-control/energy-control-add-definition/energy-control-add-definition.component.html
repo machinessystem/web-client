@@ -1,0 +1,58 @@
+<form [formGroup]="definitions" (ngSubmit)="saveActivityDefinition(definitions.value)" #_definitionsForm="ngForm">
+    <input type="text" hidden formControlName="activityId">
+    <ng-container formArrayName="definitions" *ngFor="let def of defs.controls; let i=index">
+        <div [formGroupName]="i" class="row">
+            <div class="col-lg-3">
+                <input type="text" hidden formControlName="pinNo">
+                <input type="text" hidden formControlName="pinName">
+                <div class="media">
+                    <svg class="icon align-self-center mr-2">
+                        <use xlink:href="assets/icons/light.svg#plug"></use>
+                    </svg>
+                    <div class="media-body">
+                        <h4 class="m-0"> {{defs.controls[i].get('name').value}}</h4>
+                        <p class="m-0">{{defs.controls[i].get('pinNo').value}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Sensor</mat-label>
+                    <mat-select formControlName="sensor" (selectionChange)="onSelect($event.value)">
+                        <mat-option *ngFor="let input of inputPins" [value]="input?.no">
+                            {{input?.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="_definitionsForm.submitted && defs.controls[i].get('sensor').errors">
+                        <span *ngIf="getError('activityId')">{{getError('activityId')}}</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Min current value</mat-label>
+                    <input matInput type="number" step="0.01" formControlName="minValue"
+                        placeholder="Min current value">
+                    <mat-error *ngIf="_definitionsForm.submitted && defs.controls[i].get('minValue').errors">
+                        <span *ngIf="getError('activityId')">{{getError('activityId')}}</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Max current value</mat-label>
+                    <input matInput type="number" step="0.01" formControlName="maxValue"
+                        placeholder="Max current value">
+                    <mat-error *ngIf="_definitionsForm.submitted && defs.controls[i].get('minValue').errors">
+                        <span *ngIf="getError('activityId')">{{getError('activityId')}}</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="my-3" *ngIf="i!==defs.length-1">
+            <mat-divider></mat-divider>
+        </div>
+    </ng-container>
+    <div class="actions">
+        <button appButton class="to-r" [disabled]="isProcessing || definitions.invalid">Save</button>
+    </div>
+</form>

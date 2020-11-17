@@ -1,0 +1,7 @@
+<div class="container">
+    <ng-container [ngSwitch]="activity?._id">
+        <div *ngSwitchCase="ACTIVITY_CLASSES?.ENERGY_MEASUREMENT">
+            <app-energy-control-definitions></app-energy-control-definitions>
+        </div>
+    </ng-container>
+</div>

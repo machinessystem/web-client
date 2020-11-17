@@ -1,0 +1,14 @@
+<div class="flyout__container">
+    <div class="flyout__content">
+        <div class="card">
+            <mat-progress-bar *ngIf="isProcessing" mode="indeterminate"></mat-progress-bar>
+            <div class="container">
+                <a routerLink="/">
+                    <app-logo></app-logo>
+                </a>
+            </div>
+            <ng-content></ng-content>
+        </div>
+        <div class="footer"></div>
+    </div>
+</div>

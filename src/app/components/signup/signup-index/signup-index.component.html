@@ -1,0 +1,66 @@
+<form [formGroup]="signUpBasicForm" #signup="ngForm" (ngSubmit)="doSignup(signUpBasicForm.value)"
+    *ngIf="started else emailVerificationTempl">
+    <mat-form-field appearance="outline">
+        <mat-label>Full name</mat-label>
+        <input matInput type="text" formControlName="displayName" placeholder="Name">
+        <mat-error *ngIf="signUpBasicForm.get('displayName').errors && signup.submitted">
+            <span *ngIf="signUpBasicForm.get('displayName').hasError('required')">Please enter your name</span>
+            <span *ngIf="signUpBasicForm.get('displayName').hasError('pattern')">Your name should have only first
+                and last
+                name, excluding numeric or special charatar</span>
+            <span>{{getError('displayName')}}</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="Email">
+        <mat-error *ngIf="signUpBasicForm.get('email').errors && signup.submitted">
+            <span *ngIf="signUpBasicForm.get('email').hasError('required')">Please enter your email</span>
+            <span *ngIf="signUpBasicForm.get('email').hasError('email')">Please enter a vaild email address</span>
+            <span>{{getError('email')}}</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="signUpBasicForm.get('password').errors && signup.submitted">
+            <span *ngIf="signUpBasicForm.get('password').hasError('required')">Please enter your password</span>
+            <span *ngIf="signUpBasicForm.get('password').hasError('pattern')">Your password must contain minimum 8
+                characters including lower and uppercase letter, number and special character</span>
+            <span>{{getError('password')}}</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="cPassword">
+        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="signUpBasicForm.get('cPassword').errors">
+            <span *ngIf="signUpBasicForm.get('cPassword').hasError('passwordsNotMatched')">Passwords didn't
+                match</span>
+        </mat-error>
+    </mat-form-field>
+    <div class="form-group">
+        <mat-checkbox formControlName="agreement" style="word-wrap:normal;">I accept all terms of use and policies.
+        </mat-checkbox>
+        <mat-error *ngIf="signUpBasicForm.get('agreement').errors">
+            <span *ngIf="signUpBasicForm.get('agreement').hasError('required')">You need to accept the agreement
+                first</span>
+        </mat-error>
+    </div>
+    <div class="actions">
+        <a (click)="navToLogin()">Login</a>
+        <button appButton class="to-r" type="submit"
+            [disabled]="isProcessing || signUpBasicForm.invalid">Signup</button>
+    </div>
+</form>
+
+<ng-template #emailVerificationTempl>
+    <p>Please confirm your email</p>
+</ng-template>
