@@ -1,6 +1,6 @@
 # Machines System Web Application
 
-This web application is built using Firebase web, its own project's server API.
+This web application is built using its own project's server API and Firebase APIs.
 
 ### Technology used
 Angular
